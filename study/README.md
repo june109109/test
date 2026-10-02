@@ -126,7 +126,38 @@
 | 10-5 | [단위·통합·계약·E2E](10-testing/05-test-layers.md) | [정답·해설](10-testing/05-test-layers-answers.md) |
 | 10-6 | [커버리지와 회귀 방지](10-testing/06-coverage.md) | [정답·해설](10-testing/06-coverage-answers.md) |
 
-현재 작성 완료: **1~10장, 총 72편**. 다음 작성 대상은 **11-1. 도구와 부하 모델**입니다. 나머지는 작성 계획입니다.
+## 11. 성능 테스트
+
+| 소단원 | 학습 자료 | 퀴즈 해설 |
+| --- | --- | --- |
+| 11-1 | [도구와 부하 모델](11-performance/01-load-models.md) | [정답·해설](11-performance/01-load-models-answers.md) |
+| 11-2 | [재현 가능한 시나리오](11-performance/02-scenarios.md) | [정답·해설](11-performance/02-scenarios-answers.md) |
+| 11-3 | [지표 해석과 용량 판단](11-performance/03-metrics.md) | [정답·해설](11-performance/03-metrics-answers.md) |
+| 11-4 | [FastAPI 병목 맞히기](11-performance/04-bottleneck-lab.md) | [정답·해설](11-performance/04-bottleneck-lab-answers.md) |
+| 11-5 | [개선 검증과 회귀 기준](11-performance/05-improvement.md) | [정답·해설](11-performance/05-improvement-answers.md) |
+
+## 12. 아키텍처 설계해보기
+
+| 소단원 | 학습 자료 | 퀴즈 해설 |
+| --- | --- | --- |
+| 12-1 | [네이버 메인 요구사항 정하기](12-architecture/01-requirements.md) | [정답·해설](12-architecture/01-requirements-answers.md) |
+| 12-2 | [트래픽·데이터·서버 수 추정](12-architecture/02-capacity.md) | [정답·해설](12-architecture/02-capacity-answers.md) |
+| 12-3 | [저장·조회·비동기 처리 구조](12-architecture/03-data-flow.md) | [정답·해설](12-architecture/03-data-flow-answers.md) |
+| 12-4 | [우리 스택의 처리 한도](12-architecture/04-stack-limits.md) | [정답·해설](12-architecture/04-stack-limits-answers.md) |
+| 12-5 | [실패·일관성·운영 설계](12-architecture/05-failures.md) | [정답·해설](12-architecture/05-failures-answers.md) |
+| 12-6 | [설계 리뷰와 수정](12-architecture/06-design-review.md) | [정답·해설](12-architecture/06-design-review-answers.md) |
+
+## 13. 코딩 스킬과 습관
+
+| 소단원 | 학습 자료 | 퀴즈 해설 |
+| --- | --- | --- |
+| 13-1 | [읽기 좋은 코드·불변성·순수 함수](13-coding/01-readable-pure.md) | [정답·해설](13-coding/01-readable-pure-answers.md) |
+| 13-2 | [파이썬스러움과 과한 마법](13-coding/02-pythonic.md) | [정답·해설](13-coding/02-pythonic-answers.md) |
+| 13-3 | [문제에서 출발하는 디자인 패턴](13-coding/03-patterns.md) | [정답·해설](13-coding/03-patterns-answers.md) |
+| 13-4 | [테스트로 감싸고 리팩토링하기](13-coding/04-refactoring.md) | [정답·해설](13-coding/04-refactoring-answers.md) |
+| 13-5 | [매일 15분 코드 읽기](13-coding/05-reading.md) | [정답·해설](13-coding/05-reading-answers.md) |
+
+현재 작성 완료: **1~13장 전체 88편**. 모든 소단원에 퀴즈 5문항과 별도 해설이 있습니다(**총 440문항**). [아키텍처 설계 워크북](templates/architecture-workbook.md)으로 최종 설계를 정리할 수 있습니다.
 
 [실행 결과와 한계](results/README.md): HTTP·동시성·FastAPI·DB·인증·캐시·배포 전환·관측·pytest 실습의 실제 결과와 미실행 범위를 기록했습니다. 독자 관찰 과제와 실행한 실험을 구분했습니다.
 

@@ -1,0 +1,8 @@
+{
+  "change": "extract subtotal, apply_discount, shipping_fee; preserve validation and API",
+  "passed": 21,
+  "failed": 0,
+  "original_unchanged": true,
+  "stdout": ".....................                                                    [100%]\n21 passed in 0.04s\n",
+  "stderr": ""
+}

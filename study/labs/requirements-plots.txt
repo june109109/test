@@ -1,0 +1,2 @@
+# Version used to render the saved experiment charts.
+matplotlib==3.10.8
