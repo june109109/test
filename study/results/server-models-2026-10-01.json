@@ -1,0 +1,21 @@
+{
+  "python": "3.12.14",
+  "requests_per_model": 4,
+  "delay_seconds": 0.08,
+  "repeats": 1,
+  "single": {
+    "seconds": 0.3260814959999152,
+    "completed": 4,
+    "max_active_handlers": 1,
+    "unique_pids": 1,
+    "unique_handler_threads": 1
+  },
+  "pool4": {
+    "seconds": 0.08712113599995064,
+    "completed": 4,
+    "max_active_handlers": 4,
+    "unique_pids": 1,
+    "unique_handler_threads": 4
+  },
+  "validation": "all 8 responses succeeded; serial/parallel handler counts verified"
+}

@@ -1,0 +1,213 @@
+{
+  "python": "3.12.14",
+  "psycopg": "3.2.10",
+  "cases": {
+    "READ COMMITTED": [
+      100,
+      200
+    ],
+    "REPEATABLE READ": [
+      100,
+      100
+    ],
+    "stale_read_modify_write": 101,
+    "server_side_increment": 102,
+    "write_skew_REPEATABLE READ": {
+      "initial_counts": [
+        2,
+        2
+      ],
+      "remaining": 0,
+      "sqlstate": null
+    },
+    "write_skew_SERIALIZABLE": {
+      "initial_counts": [
+        2,
+        2
+      ],
+      "remaining": 1,
+      "sqlstate": "40001"
+    },
+    "lock_timeout_sqlstate": "55P03"
+  },
+  "server": "PostgreSQL 17.6 (Debian 17.6-2.pgdg12+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+  "index": {
+    "rows": 100000,
+    "before": {
+      "Plan": {
+        "Node Type": "Limit",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 2852.66,
+        "Total Cost": 2852.71,
+        "Plan Rows": 20,
+        "Plan Width": 8,
+        "Actual Startup Time": 4.991,
+        "Actual Total Time": 4.994,
+        "Actual Rows": 20,
+        "Actual Loops": 1,
+        "Shared Hit Blocks": 1600,
+        "Shared Read Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Temp Written Blocks": 0,
+        "Plans": [
+          {
+            "Node Type": "Sort",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 2852.66,
+            "Total Cost": 2852.91,
+            "Plan Rows": 100,
+            "Plan Width": 8,
+            "Actual Startup Time": 4.99,
+            "Actual Total Time": 4.991,
+            "Actual Rows": 20,
+            "Actual Loops": 1,
+            "Sort Key": [
+              "created_at DESC"
+            ],
+            "Sort Method": "top-N heapsort",
+            "Sort Space Used": 26,
+            "Sort Space Type": "Memory",
+            "Shared Hit Blocks": 1600,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0,
+            "Plans": [
+              {
+                "Node Type": "Seq Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Relation Name": "orders",
+                "Alias": "orders",
+                "Startup Cost": 0.0,
+                "Total Cost": 2850.0,
+                "Plan Rows": 100,
+                "Plan Width": 8,
+                "Actual Startup Time": 0.008,
+                "Actual Total Time": 4.966,
+                "Actual Rows": 100,
+                "Actual Loops": 1,
+                "Filter": "(user_id = 42)",
+                "Rows Removed by Filter": 99900,
+                "Shared Hit Blocks": 1600,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0
+              }
+            ]
+          }
+        ]
+      },
+      "Planning": {
+        "Shared Hit Blocks": 20,
+        "Shared Read Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Temp Written Blocks": 0
+      },
+      "Planning Time": 0.115,
+      "Triggers": [],
+      "Execution Time": 5.007
+    },
+    "after": {
+      "Plan": {
+        "Node Type": "Limit",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 0.29,
+        "Total Cost": 79.04,
+        "Plan Rows": 20,
+        "Plan Width": 8,
+        "Actual Startup Time": 0.02,
+        "Actual Total Time": 0.03,
+        "Actual Rows": 20,
+        "Actual Loops": 1,
+        "Shared Hit Blocks": 20,
+        "Shared Read Blocks": 2,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Temp Written Blocks": 0,
+        "Plans": [
+          {
+            "Node Type": "Index Scan",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Scan Direction": "Forward",
+            "Index Name": "orders_user_time",
+            "Relation Name": "orders",
+            "Alias": "orders",
+            "Startup Cost": 0.29,
+            "Total Cost": 394.02,
+            "Plan Rows": 100,
+            "Plan Width": 8,
+            "Actual Startup Time": 0.019,
+            "Actual Total Time": 0.028,
+            "Actual Rows": 20,
+            "Actual Loops": 1,
+            "Index Cond": "(user_id = 42)",
+            "Rows Removed by Index Recheck": 0,
+            "Shared Hit Blocks": 20,
+            "Shared Read Blocks": 2,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0
+          }
+        ]
+      },
+      "Planning": {
+        "Shared Hit Blocks": 13,
+        "Shared Read Blocks": 1,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Temp Written Blocks": 0
+      },
+      "Planning Time": 0.511,
+      "Triggers": [],
+      "Execution Time": 0.041
+    }
+  },
+  "validation": "7 isolation/locking cases and before/after query returned expected results",
+  "cleanup": "own UUID schema dropped; all connections closed"
+}

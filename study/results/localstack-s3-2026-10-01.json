@@ -1,0 +1,76 @@
+{
+  "python": "3.12.14",
+  "versions": {
+    "boto3": "1.35.99",
+    "botocore": "1.35.99",
+    "urllib3": "2.8.0",
+    "fastapi": "0.141.1",
+    "starlette": "1.6.0",
+    "anyio": "4.14.2",
+    "httpx": "0.28.1"
+  },
+  "endpoint": "http://127.0.0.1:32768",
+  "transport": "FastAPI in-process ASGITransport; boto3 makes real HTTP calls to local S3 emulator",
+  "requests_per_batch": 10,
+  "repeats": 3,
+  "results": {
+    "0.0": {
+      "async-direct": {
+        "seconds": [
+          0.03508127000532113,
+          0.05008882099355105,
+          0.038017003003915306
+        ],
+        "median_seconds": 0.038017003003915306
+      },
+      "sync": {
+        "seconds": [
+          0.03894867000053637,
+          0.031501693003519904,
+          0.03148800099734217
+        ],
+        "median_seconds": 0.031501693003519904
+      },
+      "async-offload": {
+        "seconds": [
+          0.032058158998552244,
+          0.04589597899757791,
+          0.027752866000810172
+        ],
+        "median_seconds": 0.032058158998552244
+      }
+    },
+    "0.05": {
+      "async-direct": {
+        "seconds": [
+          0.5425894479994895,
+          0.5455019739965792,
+          0.5406617869957699
+        ],
+        "median_seconds": 0.5425894479994895
+      },
+      "sync": {
+        "seconds": [
+          0.0956701620016247,
+          0.10177549999934854,
+          0.07992291600385215
+        ],
+        "median_seconds": 0.0956701620016247
+      },
+      "async-offload": {
+        "seconds": [
+          0.10762394899938954,
+          0.08123000899649924,
+          0.08491042500099866
+        ],
+        "median_seconds": 0.08491042500099866
+      }
+    }
+  },
+  "delay_note": "0.05s is injected time.sleep BEFORE SDK call, not measured LocalStack/AWS network latency",
+  "anyio_default_tokens": 40,
+  "sdk_max_pool_connections": 20,
+  "sdk_total_max_attempts": 1,
+  "validation": "180 timed S3 reads matched expected bytes; API responses and execution threads verified",
+  "cleanup": "own object and bucket deleted; head_bucket returned 404"
+}

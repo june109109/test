@@ -1,0 +1,70 @@
+{
+  "python": "3.12.14",
+  "versions": {
+    "fastapi": "0.141.1",
+    "starlette": "1.6.0",
+    "anyio": "4.14.2",
+    "httpx": "0.28.1"
+  },
+  "transport": "httpx.ASGITransport; in-process; no TCP, TLS, Uvicorn or multiworker",
+  "requests_per_batch": 10,
+  "delay_seconds": 0.05,
+  "repeats": 3,
+  "anyio_default_tokens": 40,
+  "results": {
+    "async-blocking": {
+      "seconds": [
+        0.5089870799997698,
+        0.5082934749998458,
+        0.5071479230000477
+      ],
+      "median_seconds": 0.5082934749998458,
+      "peak_active_handler_bodies": [
+        1,
+        1,
+        1
+      ]
+    },
+    "sync": {
+      "seconds": [
+        0.06064879099994869,
+        0.059889879999900586,
+        0.057866202000241174
+      ],
+      "median_seconds": 0.059889879999900586,
+      "peak_active_handler_bodies": [
+        10,
+        10,
+        10
+      ]
+    },
+    "async-io": {
+      "seconds": [
+        0.058245419999821024,
+        0.054718358000172884,
+        0.05393021800000497
+      ],
+      "median_seconds": 0.054718358000172884,
+      "peak_active_handler_bodies": [
+        10,
+        10,
+        10
+      ]
+    },
+    "async-thread": {
+      "seconds": [
+        0.057544092000171077,
+        0.05907825500025865,
+        0.05667095699982383
+      ],
+      "median_seconds": 0.057544092000171077,
+      "peak_active_handler_bodies": [
+        10,
+        10,
+        10
+      ]
+    }
+  },
+  "dependency_check": "sync Depends runs off-loop; async route and direct helper run on-loop",
+  "validation": "120 timed responses succeeded; thread boundaries and overlap verified; dependency check passed"
+}

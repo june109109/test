@@ -1,0 +1,7 @@
+# Direct and SDK transport versions used for the LocalStack study.
+-r requirements-fastapi.txt
+boto3==1.35.99
+botocore==1.35.99
+s3transfer==0.10.4
+jmespath==1.1.0
+urllib3==2.8.0

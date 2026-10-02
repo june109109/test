@@ -1,0 +1,130 @@
+{
+  "contexts": {
+    "values": [
+      {
+        "task": "request-A",
+        "to_thread": "request-A",
+        "run_in_executor": null
+      },
+      {
+        "task": "request-B",
+        "to_thread": "request-B",
+        "run_in_executor": null
+      }
+    ],
+    "logs": [
+      {
+        "level": "INFO",
+        "event": "request_observed",
+        "request_id": "request-A"
+      },
+      {
+        "level": "INFO",
+        "event": "request_observed",
+        "request_id": "request-B"
+      }
+    ],
+    "parent_context_after_reset": null
+  },
+  "lag": {
+    "blocking": {
+      "samples_seconds": [
+        0.00011373700283002098,
+        0.00019494999753078435,
+        0.00013375200534937893,
+        0.06028368099679938,
+        0.00046905000373953943,
+        0.00026725599775090803,
+        0.00014580799790564914,
+        0.00012848499784013246
+      ],
+      "max_lag_seconds": 0.06028368099679938,
+      "median_lag_seconds": 0.00017037899771821675
+    },
+    "offloaded": {
+      "samples_seconds": [
+        0.00013359400065382932,
+        0.0002294130000518634,
+        0.00019450899446383108,
+        0.0002956710060243494,
+        0.00017523899907246222,
+        0.0001856329955626278,
+        0.0001431590036372653,
+        0.00016244900063611557,
+        0.00013710799714317535,
+        0.00014156500139506523,
+        0.00013334899733308692,
+        0.00011207300587557246,
+        0.00010540899995248754,
+        0.00014290699356934045,
+        0.00017702800425468002,
+        0.0007978159966296515,
+        0.00013477400090778236,
+        0.00016670600336510678,
+        0.0006670080011826939,
+        0.00029382699460256834
+      ],
+      "max_lag_seconds": 0.0007978159966296515,
+      "median_lag_seconds": 0.00016457750200061117
+    }
+  },
+  "anyio_pool": {
+    "configured_tokens": 2,
+    "requests": 6,
+    "completed": 6,
+    "peak_borrowed_tokens": 2,
+    "duration_seconds": 0.0932489029946737,
+    "borrowed_samples": [
+      0,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ]
+  },
+  "allocations": {
+    "retained_objects": 1000,
+    "payload_bytes_each": 1024,
+    "traced_size_delta_bytes": 1090424,
+    "scope": "Python-traced allocations, not RSS or a native allocation inventory"
+  },
+  "scope": "synthetic in-process probes; no Prometheus server, Grafana or OpenTelemetry collector"
+}

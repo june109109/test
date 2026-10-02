@@ -1,0 +1,20 @@
+{
+  "cache": {
+    "initial": [
+      "version-1",
+      "version-1"
+    ],
+    "only_A_invalidated": [
+      "version-2",
+      "version-1"
+    ],
+    "B_after_invalidation": "version-2",
+    "source": "shared temporary file, NOT Redis"
+  },
+  "cancellation": {
+    "timeout_observed": true,
+    "async_task_cancelled": true,
+    "blocking_thread_still_running_after_timeout": true,
+    "thread_finished_after_explicit_release": true
+  }
+}

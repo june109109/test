@@ -1,0 +1,23 @@
+{
+  "transport": "actual loopback HTTP/1.1; two app subprocesses; educational in-process proxy",
+  "unhealthy_candidate_kept_old_target": true,
+  "active_old_at_switch": 3,
+  "transition_requests": 40,
+  "transition_errors": 0,
+  "version_counts": {
+    "blue-v1": 3,
+    "green-v2": 37
+  },
+  "rollback_observed": true,
+  "after_old_stop_requests": 10,
+  "after_old_stop_errors": 0,
+  "cleanup": "both app processes and proxy stopped; sockets closed",
+  "not_tested": [
+    "TLS",
+    "nginx/ALB",
+    "Docker or Kubernetes rollout",
+    "DB migrations",
+    "long-lived streams",
+    "real unhealthy backend probe; candidate rejection was simulated"
+  ]
+}

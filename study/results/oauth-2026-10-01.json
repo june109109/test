@@ -1,0 +1,33 @@
+{
+  "transport": "in-process ASGITransport; fictional provider, pinned RSA public key",
+  "versions": {
+    "PyJWT": "2.13.0",
+    "httpx": "0.28.1"
+  },
+  "passed": 15,
+  "checks": [
+    "successful code+PKCE+ID-token verification",
+    "callback replay rejected",
+    "user denial rejected",
+    "unknown state rejected",
+    "other browser binding rejected",
+    "expired login transaction rejected",
+    "wrong PKCE verifier rejected",
+    "authorization code replay rejected",
+    "token redirect URI mismatch rejected",
+    "unregistered authorize redirect rejected without redirect",
+    "wrong issuer rejected",
+    "wrong audience rejected",
+    "wrong expiry rejected",
+    "wrong nonce rejected",
+    "wrong signature rejected"
+  ],
+  "not_tested": [
+    "real identity verification",
+    "HTTPS/browser cookies",
+    "JWKS rotation/discovery",
+    "real provider compatibility",
+    "refresh tokens",
+    "production session storage"
+  ]
+}

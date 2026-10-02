@@ -1,0 +1,6 @@
+# Direct packages observed in the validated environment, not a transitive lockfile.
+fastapi==0.141.1
+starlette==1.6.0
+anyio==4.14.2
+httpx==0.28.1
+uvicorn==0.52.1

@@ -1,0 +1,22 @@
+{
+  "python": "3.12.14",
+  "versions": {
+    "uvicorn": "0.52.1",
+    "fastapi": "0.141.1",
+    "starlette": "1.6.0"
+  },
+  "workers": 2,
+  "transport": "real loopback HTTP/1.1 using a passed listening socket",
+  "persistent_requests": 12,
+  "persistent_distinct_pids": 1,
+  "fresh_connection_requests": 24,
+  "fresh_pid_counts": {
+    "7573": 12,
+    "7574": 12
+  },
+  "distinct_worker_tokens": 2,
+  "lifespan_started": 2,
+  "lifespan_stopped": 2,
+  "exit_code": 0,
+  "validation": "persistent connection stayed on one worker; fresh connections reached two; both lifespans closed"
+}

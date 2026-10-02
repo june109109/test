@@ -1,0 +1,2 @@
+# Observed versions, not a complete transitive lockfile.
+psycopg[binary]==3.2.10

@@ -1,0 +1,101 @@
+{
+  "environment": {
+    "python": "3.12.14",
+    "implementation": "CPython",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "visible_cpu_count": 5,
+    "affinity_cpu_count": 5,
+    "cgroup_v2_cpu_max": "400000 100000",
+    "gil_runtime_probe": "unavailable; inspect build/version",
+    "process_start_method": "spawn",
+    "tasks": 8,
+    "workers_or_async_limit": 4,
+    "cpu_iterations_per_task": 800000,
+    "server_delay_seconds": 0.05,
+    "repeats": 3,
+    "clock": "time.perf_counter",
+    "timed_region": "submit/run, transport or computation, and collect results; warmed pools",
+    "io_model": "real loopback TCP, server sleeps before one-byte response; not production network"
+  },
+  "warmup_seconds": {
+    "threads": 0.10106153400010953,
+    "processes": 0.28651058200011903
+  },
+  "results": {
+    "cpu": {
+      "sequential": {
+        "seconds": [
+          0.37278071199989427,
+          0.4236817820001306,
+          0.3998533750000206
+        ],
+        "median_seconds": 0.3998533750000206
+      },
+      "threads": {
+        "seconds": [
+          0.45352332499987824,
+          0.4245840919998045,
+          0.3893919920001281
+        ],
+        "median_seconds": 0.4245840919998045
+      },
+      "processes": {
+        "seconds": [
+          0.14159897499985163,
+          0.22850133600013578,
+          0.21464452700001857
+        ],
+        "median_seconds": 0.21464452700001857
+      },
+      "asyncio": {
+        "seconds": [
+          0.36821613400024944,
+          0.36370652699997663,
+          0.3730279699998391
+        ],
+        "median_seconds": 0.36821613400024944
+      },
+      "verified_results_per_run": 8
+    },
+    "io": {
+      "sequential": {
+        "seconds": [
+          0.40834309699994265,
+          0.4051976040000227,
+          0.41012543999977424
+        ],
+        "median_seconds": 0.40834309699994265
+      },
+      "threads": {
+        "seconds": [
+          0.10573576600017986,
+          0.1054834189999383,
+          0.10565281200024401
+        ],
+        "median_seconds": 0.10565281200024401
+      },
+      "processes": {
+        "seconds": [
+          0.10830947200020091,
+          0.10417354100036391,
+          0.10589526000012484
+        ],
+        "median_seconds": 0.10589526000012484
+      },
+      "asyncio": {
+        "seconds": [
+          0.11114742399968236,
+          0.10519784399957643,
+          0.10936052800025209
+        ],
+        "median_seconds": 0.10936052800025209
+      },
+      "verified_results_per_run": 8
+    }
+  },
+  "warmup_unique_worker_pids": {
+    "threads": 1,
+    "processes": 4
+  },
+  "validation": "all task results matched; all measured runs completed"
+}
