@@ -82,3 +82,15 @@ LocalStack 4.0.0 컨테이너는 제거했습니다. 50ms 지연 조건은 SDK �
 ## 리팩토링 검증
 
 [원본 결과](refactor-2026-10-02.json), [실습](../13-coding/04-refactoring.md). 2026-10-02, 임시 복사본의 가격 모듈에서 계산 세 단계를 함수로 추출하고 기존21개 테스트를 그대로 실행하여 모두 통과했습니다. 원본 코드 바이트가 유지되고 임시 복사본이 제거되었음을 확인했습니다. 전체 입력 동치나 성능 개선을 증명한 것은 아닙니다.
+
+## Python / FastAPI 트랙 보강 (2026-10-06)
+
+[JUnit 원본](python-track-2026-10-06.xml), [9-7 계측 연결](../09-observability/07-live-metrics.md), [10-7 테스트 도구](../10-testing/07-python-toolkit.md).
+
+`/workspace/study-track/bin/python -m pytest -q -c study/labs/python_track_tests/pytest.ini study/labs/python_track_tests --junitxml=study/results/python-track-2026-10-06.xml` 실행: **7 passed**, botocore 1.35.99의 `datetime.utcnow` deprecation 경고 11건.
+
+- moto S3의 빈/텍스트/바이너리 왕복 3개와 NoSuchKey/404 1개.
+- polyfactory 객체 독립성 1개, 주입한 시계의 TTL 경계 1개.
+- ASGI exporter 1개: 루프 지연 표본, AnyIO 토큰 2개, 응답 6개 완료, delay 범위 422, Prometheus 본문과 RSS 이름 확인.
+
+Prometheus 설정 YAML과 Grafana JSON은 제공했지만 수집기·Grafana 서버를 실행한 결과는 아닙니다. 실제 AWS·aioboto3·OTel Collector·py-spy·memray 검증도 포함하지 않았습니다. 직접 의존성은 `labs/requirements-python-track.txt`에 기록했으며, 기존 패키지를 변경하지 않는 별도 가상환경에 설치했습니다.

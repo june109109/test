@@ -78,6 +78,17 @@ HTTPX의 ASGITransport로 앱을 같은 프로세스에서 호출합니다. **�
 
 자신의 API에서 경로 함수→의존성→helper→SDK의 호출 사슬을 그리세요. 각 경계에 호출자 스레드·블로킹 가능성·오프로딩 여부를 표시합니다. 함수 이름과 async 선언만 보고 SDK가 비동기라고 추측하지 않습니다.
 
+### Python 트랙 보강: 코드 배치 결정표
+
+| 처리 내용 | 출발점 | 반드시 확인할 비용 |
+| --- | --- | --- |
+| httpx.AsyncClient 등 async I/O | async def + await | 풀 대기·deadline·client 수명 |
+| 동기 SDK 중심의 짧은 경로 | def 경로 | 공유 AnyIO 토큰·하류 한도 |
+| async I/O와 일부 boto3 혼합 | async def에서 명시적 오프로딩 | 대기 취소 후 잔여 작업·별도 executor 여부 |
+| 긴 Python CPU 계산 | 별도 프로세스/작업 서비스 검토 | 직렬화·결과 전달·작업 상태·자원 제한 |
+
+Starlette/AnyIO의 통상 기본 40토큰은 버전별로 확인하며 모든 스레드의 총수나 서버 전체 한도로 읽지 않습니다. 같은 limiter를 쓰는 동기 dependency·경로 등이 경쟁할 수 있습니다. 워커2개는 별도 limiter2개이므로 하류 부하는 합산됩니다. 토큰을 늘리기 전에 제출 대기와 실제 SDK 시간을 나누어 봅니다. [9-7](../09-observability/07-live-metrics.md)에서 토큰2개에 요청8개를 보내는 관측 절차를 제공합니다.
+
 ## 퀴즈
 
 Q1·Q2 각 1점, Q3·Q4 각 2점, Q5 4점. 권장 통과 8점.

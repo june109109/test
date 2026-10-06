@@ -41,6 +41,8 @@ async def client():
 
 DB pool을 lifespan에서 만드는 API를 테스트한다고 가정하세요. 함수별 트랜잭션 rollback, loop scope, 시작 실패, client 종료 뒤 pool 종료 순서를 그립니다.
 
+보강: pytest-asyncio와 분리해 AnyIO marker/backend를 설정하는 실제 예제는 [10-7](07-python-toolkit.md)에 있습니다.
+
 ## 퀴즈
 
 ### Q1

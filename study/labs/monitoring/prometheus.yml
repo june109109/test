@@ -1,0 +1,9 @@
+global:
+  scrape_interval: 1s
+  scrape_timeout: 900ms
+scrape_configs:
+  - job_name: study-python
+    static_configs:
+      - targets: ['127.0.0.1:8008']
+        labels:
+          service: study-python

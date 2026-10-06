@@ -39,6 +39,19 @@ CPU-heavy 작업은 워커를 quota보다 훨씬 늘려도 총 계산 예산이 
 
 quota 2 CPU, 메모리 1GiB, 평균 I/O 대기 200ms인 API를 워커 1·2·4로 비교할 실험을 설계하세요. RPS뿐 아니라 throttling·p99·오류·메모리·DB 연결 예산을 포함합니다.
 
+### Python 트랙 보강: 읽기 전용 환경 점검
+
+```python
+import os
+from pathlib import Path
+print("logical", os.cpu_count())
+print("affinity", len(os.sched_getaffinity(0)) if hasattr(os, "sched_getaffinity") else "unsupported")
+p = Path("/sys/fs/cgroup/cpu.max")
+print("cgroup-v2 quota", p.read_text().strip() if p.exists() else "inspect platform cgroup layout")
+```
+
+독자가 자신의 컨테이너에서 실행할 읽기 전용 조각입니다. cgroup v1·다른 mount·부모 제한에서는 이 경로 하나로 전체 제한을 알 수 없습니다. 프로세스 API가 알려주는 값, quota와 throttling, 워커별 RSS를 함께 기록하세요. worker 수만 바꿀 때 DB풀·로컬 캐시도 복제되므로 CPU 최적화가 메모리/DB 장애를 만들지 않게 예산을 확인합니다.
+
 ## 퀴즈
 
 ### Q1

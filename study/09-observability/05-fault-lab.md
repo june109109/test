@@ -46,6 +46,8 @@ Grafana에는 같은 시간 범위의 요청 지연·loop lag·tokens·CPU·DB w
 
 실제 앱의 테스트 환경에서 느린 SDK, DB 풀 대기, CPU 부하를 각각 하나씩 주입할 실험서를 만드세요. 중단 조건·최대 시간·대상 범위·복구 확인을 적고 모든 변수를 동시에 바꾸지 않습니다.
 
+보강: 실제 prometheus-client exporter·Prometheus 설정·Grafana 가져오기 파일과 실행 범위는 [9-7](07-live-metrics.md)에 추가했습니다.
+
 ## 퀴즈
 
 ### Q1

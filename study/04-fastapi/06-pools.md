@@ -68,6 +68,22 @@ aioboto3·aiobotocore는 boto3와 유사한 비동기 사용을 제공하는 후
 
 인스턴스 2개×워커 3개×AnyIO 토큰 40인 서비스를 그립니다. boto3 보관 풀은 워커당 10, 외부 API 허용량은 200요청/초입니다. ‘240개 요청이 항상 즉시 성공한다’는 결론의 문제를 찾고 실행·보관·요청률·큐·재시도를 따로 표시하세요.
 
+### Python 트랙 보강: aioboto3 전환의 코드 경계
+
+다음은 설치·실행하지 않은 API 사용 형태 예시입니다. client는 워커 lifespan에서 만들고, 버전 호환을 고정한 별도 환경에서 검증해야 합니다.
+
+```python
+# session은 aioboto3.Session(), bucket/key는 신뢰한 업무 입력이라는 전제
+async with session.client("s3") as client:
+    response = await client.get_object(Bucket=bucket, Key=key)
+    async with response["Body"] as stream:
+        payload = await stream.read()
+```
+
+client 생성·요청·본문 read·본문 종료의 수명을 모두 옮겨야 합니다. `await client.get_object`만 바꾸고 본문 소비·예외 정리를 빠뜨리면 충분하지 않습니다. 요청마다 client를 새로 만들면 풀 재사용 이익도 줄 수 있습니다. 실제 API·StreamingBody 동작은 선택한 aioboto3/aiobotocore 버전에서 확인하세요.
+
+기존 boto3+오프로딩, aioboto3를 비교할 때 같은 객체 크기·동시 요청·실제 read/close·warmup·에러 정책을 적용합니다. boto3의 `max_pool_connections`와 비동기 connector의 한도가 같다고 가정하지 않습니다. [4-4](04-localstack.md)의180회 읽기는 boto3 경로만 검증한 결과입니다.
+
 ## 퀴즈
 
 Q1·Q2 각 1점, Q3·Q4 각 2점, Q5 4점. 권장 통과 8점.

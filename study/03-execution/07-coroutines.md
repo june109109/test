@@ -53,6 +53,12 @@ async def offloaded_wait():
 
 위 세 대기 함수를 heartbeat task와 함께 실행하는 실험을 설계하세요. heartbeat는 일정 간격으로 시간을 기록하고 실제 간격이 벌어진 정도를 봅니다. CPU 사용률만으로 루프 막힘을 찾기 어려운 이유도 설명하세요. `time.sleep`은 CPU를 많이 쓰지 않지만 그 스레드는 멈춥니다. 이 특정 heartbeat 실험은 아직 실행하지 않았으며, 3-9에서는 전체 작업 시간 비교를 실제로 실행합니다.
 
+### Python 트랙 보강: coroutine·Task·취소의 경계
+
+`coro = work()`는 coroutine 객체를 만들 뿐 본문을 실행하지 않습니다. `await work()`는 현재 task의 흐름에서 실행하고, `asyncio.create_task(work())`는 별도 task로 예약합니다. CPU 병렬 실행을 만드는 기능은 아닙니다. 여러 작업을 하나의 요청 수명에 묶을 때는 Python 3.11+의 TaskGroup을 후보로 비교하세요. 자식 실패 시 다른 자식의 취소·종료를 기다리는 계약을 이해해야 합니다.
+
+`await`가 보인다는 이유만으로 루프가 양보된다고 추정하지 않습니다. 이미 완료된 awaitable, await 이전의 JSON 변환·압축·동기 SDK도 확인하세요. [3-5의2×2표](05-sync-async.md)로 ‘누가 기다리는가’를 먼저 정하고, [7-4](../07-cache-timeouts/04-cancellation.md)에서 응답 취소와 실제 작업 종료를 분리합니다.
+
 ## 퀴즈
 
 Q1·Q2 각 1점, Q3·Q4 각 2점, Q5 4점. 권장 통과 8점.

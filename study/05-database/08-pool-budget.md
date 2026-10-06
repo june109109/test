@@ -52,6 +52,12 @@ Little의 법칙 `L=λW`를 안정된 시스템의 같은 측정 구간에 적�
 
 DB max_connections=240, 기타/관리/여유=60, 최대 인스턴스=4, 배포 추가=1, 워커=3입니다. 워커당 최대 연결 예산을 계산하고 pool_size·overflow 안을 두 개 제안하세요. DB 성능 실험 없이 예산 계산만으로 안전한 처리량을 선언하지 마세요.
 
+### Python 트랙 보강: Pool과 Session의 수명
+
+SQLAlchemy Engine/풀은 일반적으로 워커 수명, ORM Session/AsyncSession은 요청 또는 업무 transaction 수명으로 다룹니다. Session 하나를 전역에서 동시에 쓰거나 `asyncio.gather`의 여러 task에 공유하지 않습니다. 요청 수와 transaction 수가 같지 않은 서비스는 경계를 명시합니다.
+
+예: 앱 인스턴스3개×워커2×(pool8+overflow2)=60연결, 배포 중 인스턴스가4개면80연결입니다. 관리10개와 배치10개를 더하면100이며 DB의 예약/여유를 별도로 남겨야 합니다. `pool_timeout`은 연결 획득 대기, SQL 실행 제한은 DB/드라이버 쪽 별도 설정입니다. 프로세스 생성 전 client/풀 상속은 [4-7](../04-fastapi/07-lifecycle.md)과 함께 점검하세요.
+
 ## 퀴즈
 
 ### Q1

@@ -3,6 +3,7 @@
 사용자가 제공한 13개 대단원의 순서를 따라, 한 소단원씩 읽고 적용하고 확인하는 학습 자료입니다. 원문 웹페이지 대신 대화에 제공된 목차와 OAuth 그림을 범위의 기준으로 삼았습니다.
 
 - [전체 소단원·작성 계획](PLAN.md)
+- [공통편 이후 Python / FastAPI 트랙 — 항목별 대응과 보강 내역](PYTHON_FASTAPI_TRACK.md)
 
 ## 1. 코딩 스타일과 팀 생활
 
@@ -114,6 +115,7 @@
 | 9-4 | [병목을 보여 주는 지표](09-observability/04-bottleneck-metrics.md) | [정답·해설](09-observability/04-bottleneck-metrics-answers.md) |
 | 9-5 | [고장을 주입하고 관찰하기](09-observability/05-fault-lab.md) | [정답·해설](09-observability/05-fault-lab-answers.md) |
 | 9-6 | [프로파일링 도구 선택](09-observability/06-profiling.md) | [정답·해설](09-observability/06-profiling-answers.md) |
+| 9-7 | [Python 지표를 Prometheus·Grafana로 연결하기](09-observability/07-live-metrics.md) | [정답·해설](09-observability/07-live-metrics-answers.md) |
 
 ## 10. 테스트
 
@@ -125,6 +127,7 @@
 | 10-4 | [AWS 대역과 호환 환경](10-testing/04-aws-doubles.md) | [정답·해설](10-testing/04-aws-doubles-answers.md) |
 | 10-5 | [단위·통합·계약·E2E](10-testing/05-test-layers.md) | [정답·해설](10-testing/05-test-layers-answers.md) |
 | 10-6 | [커버리지와 회귀 방지](10-testing/06-coverage.md) | [정답·해설](10-testing/06-coverage-answers.md) |
+| 10-7 | [moto·AnyIO·polyfactory 통합 테스트](10-testing/07-python-toolkit.md) | [정답·해설](10-testing/07-python-toolkit-answers.md) |
 
 ## 11. 성능 테스트
 
@@ -157,7 +160,7 @@
 | 13-4 | [테스트로 감싸고 리팩토링하기](13-coding/04-refactoring.md) | [정답·해설](13-coding/04-refactoring-answers.md) |
 | 13-5 | [매일 15분 코드 읽기](13-coding/05-reading.md) | [정답·해설](13-coding/05-reading-answers.md) |
 
-현재 작성 완료: **1~13장 전체 88편**. 모든 소단원에 퀴즈 5문항과 별도 해설이 있습니다(**총 440문항**). [아키텍처 설계 워크북](templates/architecture-workbook.md)으로 최종 설계를 정리할 수 있습니다.
+현재 작성 완료: **1~13장 전체 90편**. 모든 소단원에 퀴즈 5문항과 별도 해설이 있습니다(**총 450문항**). [아키텍처 설계 워크북](templates/architecture-workbook.md)으로 최종 설계를 정리할 수 있습니다.
 
 [실행 결과와 한계](results/README.md): HTTP·동시성·FastAPI·DB·인증·캐시·배포 전환·관측·pytest 실습의 실제 결과와 미실행 범위를 기록했습니다. 독자 관찰 과제와 실행한 실험을 구분했습니다.
 

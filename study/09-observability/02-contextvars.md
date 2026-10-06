@@ -53,6 +53,16 @@ AnyIO가 필요하며 4장의 의존성에 포함됩니다. 서로 다른 task �
 
 요청에서 background task를 만들고 응답을 끝낸 뒤 그 task가 계속 실행될 때 ID를 어떻게 표현할지 결정하세요. 원 요청 ID를 남길지 새 job_id를 만들지, task 생성 당시의 인증 정보를 나중에 그대로 신뢰해도 되는지도 구분하세요.
 
+### Python 트랙 보강: 명시적으로 executor에 전파하기
+
+```python
+# asyncio 문맥의 설명용 조각
+ctx = contextvars.copy_context()
+result = await loop.run_in_executor(None, ctx.run, blocking_function)
+```
+
+각 제출마다 새 context를 복사합니다. 같은 Context 객체를 동시에 여러 스레드에서 enter하려고 재사용하지 않습니다. `asyncio.to_thread`는 기본적으로 context 전파를 제공하지만 스레드 안의 set이 부모 task로 자동 역전파되지는 않습니다. HTTP/메시지/프로세스로 넘어갈 때는 별도 헤더/metadata로 전달해야 합니다. contextvars는 인증 정보의 신뢰성이나 mutable 값의 깊은 복사를 보장하지 않습니다.
+
 ## 퀴즈
 
 ### Q1

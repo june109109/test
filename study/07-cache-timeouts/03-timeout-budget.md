@@ -43,6 +43,18 @@ deadline을 시작 시각+허용시간으로 잡고 각 단계에서 `remaining=
 
 요청 3초 한도에 DB 조회와 결제 API 두 단계가 있습니다. DB가 0.8초 사용했다면 결제 시도·재시도·정리 예산을 다시 계산하세요. SDK가 전체 timeout을 제공하지 않을 때 app deadline과 어떤 한계가 남는지 적습니다.
 
+### Python 트랙 보강: 설정 단위가 보이는 예
+
+```python
+# HTTPX 설정 예시. 이 값들 자체가 총 요청 1초 한도는 아님.
+timeout = httpx.Timeout(connect=0.2, read=0.8, write=0.5, pool=0.1)
+# boto3 설정 예시. initial attempt를 포함해 최대2회 시도.
+config = Config(connect_timeout=0.2, read_timeout=0.8,
+                retries={"total_max_attempts": 2, "mode": "standard"})
+```
+
+설명용 조각이며 import·client 생성·대상 호출은 생략했습니다. 바깥 `asyncio.timeout`으로 총 기다림을 제한하더라도 스레드로 넘긴 boto3를 즉시 죽이지 못합니다. 외부 호출·backoff·풀 대기·rollback·응답 시간을 모두 예산에 넣습니다. Uvicorn의 keep-alive, LB idle timeout은 이 전체 업무 deadline과 다른 설정입니다. 숫자를 일렬로 크게/작게 배치하기 전에 무엇의 시간을 재는지 써 보세요.
+
 ## 퀴즈
 
 ### Q1

@@ -38,6 +38,12 @@ tracemalloc 변화는 작지만 RSS가 커지면 native 라이브러리·allocat
 
 CPU100%+RSS안정, CPU낮음+p99높음, Python추적안정+RSS증가의 세 증상에 도구와 다음 질문을 하나씩 정하세요. py-spy와 memray는 이번 환경에서 실행하지 않았습니다.
 
+### Python 트랙 보강: 도구를 실행하기 전에 정할 것
+
+실행 중인 자신의 테스트 프로세스 PID를 확인한 후 `py-spy dump --pid <PID>`로 현재 stack을 보고, 일정 시간의 profile은 `py-spy record --pid <PID> --duration 30 -o /tmp/study-profile.svg` 같은 형태로 수집합니다. 이 명령은 사용 형태이며 이번 보강에서 py-spy를 설치/실행하지 않았습니다. attach 권한·도구 버전·컨테이너 PID namespace를 먼저 확인합니다.
+
+할당 원인에는 tracemalloc snapshot 차이, native 범위가 필요하면 `python -m memray run --native -o /tmp/study-memory.bin your_program.py`가 후보입니다. memray도 미실행 예시이며 해당 프로그램은 독자의 유한한 실습 프로그램으로 대체합니다. flamegraph의 넓이는 설정에 따른 표본/비용이며 모든 경우의 벽시계 지연과 같지 않습니다. 메모리 peak, 누적 allocation, 살아 있는 allocation, RSS 중 무엇을 보는지 보고서에 적으세요.
+
 ## 퀴즈
 
 ### Q1
